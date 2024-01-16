@@ -51,7 +51,7 @@ forgotPasswordBtn.addEventListener("click", async () => {
         // modal.hide();
         try {
             
-            const emailData = await axios.post('http://localhost:3000/password/forgotPassword', { email: emailId.value });
+            const emailData = await axios.post('http://3.109.201.50:3000/password/forgotPassword', { email: emailId.value });
             console.log(emailData);//
             successalert("Reset password email sent");
             
@@ -79,7 +79,7 @@ loginBtn.addEventListener('click',async (e) => {
     }
     else {
         try {
-            const userDetails = await axios.post('http://localhost:3000/users/login', loginData);
+            const userDetails = await axios.post('http://3.109.201.50:3000/users/login', loginData);
 
             if (userDetails.data.success) {
                 successalert(userDetails.data.message);

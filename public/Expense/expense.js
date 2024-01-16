@@ -45,7 +45,7 @@ function showPremiumFeature() {
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
-            const downloadedFilesResponse = await axios.get('http://localhost:3000/expense/filesdownloaded', {
+            const downloadedFilesResponse = await axios.get('http://3.109.201.50:3000/expense/filesdownloaded', {
                 headers: {
                     Authorization: 'Bearer ' + token //the token is a variable which holds the token
                 }
@@ -99,7 +99,7 @@ function showPremiumFeature() {
     showLeaderboardBtn.addEventListener('click', async () => {
         try {
             // Fetch data from the "/leaderboard/api" endpoint
-            const response = await axios.get('http://localhost:3000/premium/showLeaderboard');
+            const response = await axios.get('http://3.109.201.50:3000/premium/showLeaderboard');
             const leaderboardData = response.data;
 
             // Create the leaderboard modal dynamically
@@ -182,7 +182,7 @@ async function downloadReportHandler(e) {
     const token = localStorage.getItem('token');
     try {
 
-        const response = await axios.get('http://localhost:3000/expense/download', {
+        const response = await axios.get('http://3.109.201.50:3000/expense/download', {
             headers: {
                 Authorization: 'Bearer ' + token //the token is a variable which holds the token
             }
@@ -234,7 +234,7 @@ async function addExpense(expenseObject) {
     try {
         const token = localStorage.getItem('token');
         const { amount, category, description } = expenseObject;
-        const expense = await axios.post('http://localhost:3000/expense/insertExpense',
+        const expense = await axios.post('http://3.109.201.50:3000/expense/insertExpense',
             {
                 amount,
                 category,
@@ -306,7 +306,7 @@ async function updateTotalAmount(token) {
     let totalAmount = 0;
     const totalAmountInput = document.querySelector('#totalAmount');
 
-    const expenses = await axios.get('http://localhost:3000/expense/getExpense', {
+    const expenses = await axios.get('http://3.109.201.50:3000/expense/getExpense', {
         headers: {
             Authorization: 'Bearer ' + token //the token is a variable which holds the token
         }
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const token = localStorage.getItem('token');
             const noitemPerPage = localStorage.getItem('noitemPerPage') || 5;
-            const response = await axios.get(`http://localhost:3000/expense/getexpensesperpage?page=${currentPage}&noitem=${noitemPerPage}`, {
+            const response = await axios.get(`http://3.109.201.50:3000/expense/getexpensesperpage?page=${currentPage}&noitem=${noitemPerPage}`, {
                 headers: {
                     Authorization: 'Bearer ' + token
                 }
@@ -442,7 +442,7 @@ async function deleteExpense(button) {
     }
 
     try {
-        const response = await axios.post(`http://localhost:3000/expense/deleteExpense/${expenseId}`, null, {
+        const response = await axios.post(`http://3.109.201.50:3000/expense/deleteExpense/${expenseId}`, null, {
             headers: {
                 Authorization: 'Bearer ' + token //the token is a variable that holds the token
             }
@@ -473,7 +473,7 @@ async function deleteExpense(button) {
 
 document.getElementById('buy-premium-btn').onclick = async function (e) {
     const token = localStorage.getItem('token');
-    const response = await axios.get('http://localhost:3000/purchase/premiummembership', {
+    const response = await axios.get('http://3.109.201.50:3000/purchase/premiummembership', {
         headers: {
             Authorization: 'Bearer ' + token
         }
@@ -484,7 +484,7 @@ document.getElementById('buy-premium-btn').onclick = async function (e) {
         "key": response.data.key_id,
         "order_id": response.data.order.id,
         "handler": async function (response) {
-            await axios.post('http://localhost:3000/purchase/updatetransactionstatus', {
+            await axios.post('http://3.109.201.50:3000/purchase/updatetransactionstatus', {
                 order_id: options.order_id,
                 payment_id: response.razorpay_payment_id,
             }, {
@@ -506,7 +506,7 @@ document.getElementById('buy-premium-btn').onclick = async function (e) {
 
     rzp1.on('payment.failed', async function (response) {
         console.log(response);
-        await axios.post('http://localhost:3000/purchase/updatetransactionstatus', {
+        await axios.post('http://3.109.201.50:3000/purchase/updatetransactionstatus', {
             order_id: options.order_id,
             payment_id: null, // Indicate payment failure
         }, {

@@ -50,7 +50,7 @@ const forgotPassword = async (req, res, next) => {
             <body>
             <h1>Reset Your Password</h1>
             <p>Click the button below to reset your password:</p>
-            <a href="http://localhost:3000/password/reset/${id}" style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
+            <a href="http://3.109.201.50:3000/password/reset/${id}" style="display: inline-block; padding: 10px 15px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">Reset Password</a>
             </body>
             </html>
             `, params: {

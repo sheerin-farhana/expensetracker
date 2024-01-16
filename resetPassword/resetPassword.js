@@ -22,7 +22,7 @@ console.log("reset id", resetId);
 //         if (password.value !== confirmPassword.value) {
 //             alert("Password doesn't match");
 //         } else {
-//             const resetResponse = await axios.post("http://localhost:3000/password/reset", {
+//             const resetResponse = await axios.post("http://3.109.201.50:3000/password/reset", {
 //                 resetId: resetId,
 //                 newpassword: password.value
 //             });

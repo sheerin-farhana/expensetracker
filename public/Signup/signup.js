@@ -46,7 +46,7 @@ signupBtn.addEventListener('click',async (e) => {
                 phone: phone,
                 password:password
             }
-            const users = await axios.post('http://localhost:3000/users/signup', userObject);
+            const users = await axios.post('http://3.109.201.50:3000/users/signup', userObject);
             successalert("signed up successfully");
             
             
