@@ -56,11 +56,12 @@ ForgotPassword.belongsTo(User);
 
 User.hasMany(DownloadedFile, { foreignKey: 'userId' });
 DownloadedFile.belongsTo(User, { foreignKey: 'userId' });
-
+const PORT = process.env.PORT || 3000;
 sequelize
     .sync()
     .then(result => {
-        app.listen(process.env.PORT || 3000);
-        console.log("app is running");
+        app.listen(PORT, '0.0.0.0', () => {
+            console.log(`Server is running on port ${PORT}`);
+          });
     })
     .catch(err => console.log(err));
